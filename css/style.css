@@ -14,7 +14,8 @@ body.nocursor,body.nocursor *{cursor:none!important}
 #app{width:390px;height:min(844px,100dvh);background:var(--w);position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:28px;box-shadow:0 10px 40px rgba(0,0,0,.12)}
 @media (max-width:500px){
   body{background:var(--w);display:block}
-  #app{width:100%;height:100dvh;border-radius:0;box-shadow:none}
+  /* 아이폰 위쪽(시간·배터리 자리)과 겹치지 않게 그만큼 비워 둬요 */
+  #app{width:100%;height:100dvh;border-radius:0;box-shadow:none;padding-top:env(safe-area-inset-top,0px)}
   .sb{display:none!important}
 }
 
