@@ -1,0 +1,113 @@
+/* 하루한겹 — 피그마 디자인(흑백)과 같은 스타일 */
+@font-face{font-family:'Pretendard';src:url(../fonts/PretendardVariable.woff2) format('woff2');font-weight:45 920;font-display:swap}
+:root{--k:#111;--g1:#333;--g2:#666;--g3:#999;--g4:#C8C8C8;--line:#E7E7E7;--bg2:#F4F4F4;--bg3:#FAFAFA;--w:#fff}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;background:#E9E9E9;color:var(--k);letter-spacing:-0.3px;display:flex;justify-content:center;align-items:center;min-height:100dvh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;letter-spacing:inherit;text-align:inherit}
+input,textarea,select{font:inherit;color:var(--k);letter-spacing:inherit}
+b{font-weight:700}
+/* 녹화용: 앱 위에서 마우스 숨기기 (설정 > 테스트 메뉴) */
+body.nocursor,body.nocursor *{cursor:none!important}
+
+/* 앱 틀: 컴퓨터에서는 휴대폰 모양, 휴대폰에서는 화면 꽉 차게 */
+#app{width:390px;height:min(844px,100dvh);background:var(--w);position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:28px;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+@media (max-width:500px){
+  body{background:var(--w);display:block}
+  #app{width:100%;height:100dvh;border-radius:0;box-shadow:none}
+  .sb{display:none!important}
+}
+
+svg.i{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sb{height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 26px;font-size:15px;font-weight:600;flex:none}
+.sb .bat{width:25px;height:12px;border:1.5px solid var(--k);border-radius:3px;position:relative}
+.sb .bat:after{content:'';position:absolute;left:1.5px;top:1.5px;bottom:1.5px;width:15px;background:var(--k);border-radius:1px}
+.hd{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex:none}
+.hd .t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700}
+.hd .bk{display:flex;align-items:center;gap:2px;font-size:17px;font-weight:600;margin-left:-6px}
+.bell{position:relative;display:flex}
+.bell.dot:after{content:'';position:absolute;right:2px;top:1px;width:7px;height:7px;border-radius:50%;background:var(--k);border:1.5px solid #fff}
+.ct{flex:1;padding:4px 20px 20px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.tabs{height:78px;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding-top:9px;flex:none;background:var(--w)}
+@media (max-width:500px){.tabs{height:auto;padding-bottom:max(12px,env(safe-area-inset-bottom))}}
+.tab{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:var(--g3);width:66px;font-weight:500;text-align:center}
+.tab.on{color:var(--k);font-weight:700}
+.card{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--w)}
+button.card{display:block;width:100%}
+button.card.row{display:flex}
+.chip{display:inline-flex;align-items:center;gap:4px;height:32px;padding:0 13px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:500;color:var(--g2);white-space:nowrap;flex:none}
+.chip.on{background:var(--k);border-color:var(--k);color:#fff}
+.chips{display:flex;gap:7px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px}
+.chips::-webkit-scrollbar{display:none}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--g1);background:var(--bg2);padding:4px 8px;border-radius:6px}
+.tag.line{background:#fff;border:1px solid var(--g4)}
+.tag.dark{background:var(--k);color:#fff}
+.kw{display:inline-flex;height:34px;align-items:center;padding:0 13px;border-radius:10px;border:1px solid var(--k);font-size:14px;font-weight:600}
+.pill{font-size:12px;border:1px solid var(--g4);border-radius:999px;padding:3px 9px;color:var(--g1)}
+.btn{height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:16px;font-weight:600;width:100%;text-align:center}
+.btn.p{background:var(--k);color:#fff}
+.btn.o{border:1px solid var(--g4);color:var(--k)}
+.btn.s{background:var(--bg2);color:var(--k)}
+.btn:disabled{opacity:.35;cursor:default}
+.h2{font-size:17px;font-weight:700}
+.sub{font-size:13px;color:var(--g2)}
+.mute{font-size:12px;color:var(--g3)}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.stack{display:flex;flex-direction:column;gap:10px}
+.inp{height:52px;width:100%;border:1px solid var(--line);border-radius:12px;padding:0 16px;font-size:15px;background:#fff;outline:none;appearance:none;-webkit-appearance:none}
+.inp:focus,.ta:focus{border-color:var(--k)}
+.inp::placeholder,.ta::placeholder{color:var(--g3)}
+select.inp{background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="%23111" stroke-width="1.7" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>') no-repeat right 14px center;padding-right:40px}
+.ta{width:100%;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.6;outline:none;resize:none;display:block}
+.lab{font-size:13px;font-weight:600;color:var(--g1);margin:16px 0 8px}
+.char{display:block;object-fit:contain}
+.circ{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.circ.p{background:var(--k);color:#fff}
+.circ.o{border:1px solid var(--g4)}
+.dots{display:flex;gap:6px}.dots i{width:6px;height:6px;border-radius:50%;background:var(--g4)}.dots i.on{background:var(--k);width:18px;border-radius:3px}
+.bottom{padding:12px 20px 30px;display:flex;flex-direction:column;gap:10px;flex:none}
+@media (max-width:500px){.bottom{padding-bottom:max(20px,env(safe-area-inset-bottom))}}
+.fab{position:absolute;right:20px;width:56px;height:56px;border-radius:50%;background:var(--k);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.18);z-index:3}
+.q{font-size:21px;font-weight:700;line-height:1.4}
+.ql{font-size:13px;font-weight:800;color:var(--g3);margin-bottom:6px}
+.toggle{width:46px;height:28px;border-radius:14px;background:var(--k);position:relative;flex:none;transition:background .15s}
+.toggle:after{content:'';position:absolute;right:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:all .15s}
+.toggle.off{background:var(--g4)}.toggle.off:after{right:21px}
+.listrow{display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);width:100%}
+.ph{background:var(--bg2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--g3)}
+.seg{display:flex;background:var(--bg2);border-radius:10px;padding:3px;font-size:13px;font-weight:600}
+.seg button{padding:6px 12px;border-radius:8px;color:var(--g3)}
+.seg button.on{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);color:var(--k)}
+.empty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 10px}
+.empty .t{font-size:17px;font-weight:700;margin-top:16px}
+.empty .s{font-size:14px;color:var(--g2);line-height:1.6;margin-top:6px}
+
+/* 녹음 버튼 */
+.recbtn{display:flex;flex-direction:column;align-items:center;gap:6px;width:80px}
+.recbtn .circ.p.on{box-shadow:0 0 0 8px var(--bg2)}
+.stop{width:22px;height:22px;border-radius:5px;background:#fff}
+.recdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--k);margin-right:6px;vertical-align:1px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.2}}
+
+/* 홈 아래 시트 */
+.sheet{position:absolute;left:0;right:0;background:#fff;border-top:1px solid var(--line);border-radius:22px 22px 0 0;box-shadow:0 -6px 18px rgba(0,0,0,.06);padding:10px 20px;z-index:2}
+.handle{width:40px;height:5px;border-radius:3px;background:var(--g4);margin:0 auto 14px}
+.day{height:54px;padding-top:4px;width:100%}
+.day .n{width:30px;height:30px;margin:0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500}
+.day.sel .n{box-shadow:inset 0 0 0 1.5px var(--k)}
+.day.today .n{background:var(--k);color:#fff;font-weight:700}
+.day.out{color:var(--g4)}
+
+/* 대화 */
+.bub-ai{background:var(--bg2);border-radius:4px 16px 16px 16px;padding:12px 14px;font-size:15px;line-height:1.55;max-width:270px;white-space:pre-line}
+.bub-me{align-self:flex-end;background:var(--k);color:#fff;border-radius:16px 4px 16px 16px;padding:12px 14px;font-size:15px;line-height:1.55;max-width:280px;white-space:pre-line}
+.chatin{flex:1;height:44px;border-radius:22px;background:var(--bg2);border:0;padding:0 16px;font-size:15px;outline:none}
+
+/* 팝업 */
+#toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(10px);background:rgba(17,17,17,.92);color:#fff;font-size:14px;padding:11px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:all .2s;z-index:50;max-width:320px;text-align:center;line-height:1.5}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:flex-end;z-index:20}
+.modal{background:#fff;width:100%;border-radius:22px 22px 0 0;padding:22px 20px 30px}
+.modal .t{font-size:18px;font-weight:700}
+.modal .s{font-size:14px;color:var(--g2);margin-top:6px;line-height:1.55}
